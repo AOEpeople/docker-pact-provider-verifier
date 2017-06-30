@@ -1,0 +1,30 @@
+plugins {
+    id "java"
+    id "au.com.dius.pact" version "3.5.0"
+}
+
+def pactBrokerUrl = System.getenv('PACT_BROKER_URL')
+def pactBrokerUsername = System.getenv('PACT_BROKER_USERNAME')
+def pactBrokerPassword = System.getenv('PACT_BROKER_PASSWORD')
+def pactProviderHost = System.getenv('PACT_PROVIDER_HOST')
+def pactProviderPort = System.getenv('PACT_PROVIDER_PORT')
+def pactProviderName = System.getenv('PACT_PROVIDER_NAME')
+def pactProviderProtocol = System.getenv('PACT_PROVIDER_PROTOCOL') ?: "http"
+
+pact {
+    serviceProviders {
+        "$pactProviderName" {
+            host = pactProviderHost
+            port = pactProviderPort
+            protocol = pactProviderProtocol
+
+            if(pactBrokerUsername && pactBrokerPassword) {
+                hasPactsFromPactBroker(pactBrokerUrl, authentication: ['Basic', pactBrokerUsername, pactBrokerPassword])
+            }
+            else {
+                println("No valid broker credentials provided. Trying to authentificate without username and password...")
+                hasPactsFromPactBroker(pactBrokerUrl)
+            }
+        }
+    }
+}
