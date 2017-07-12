@@ -24,8 +24,6 @@ RUN set -o errexit -o nounset \
   && mkdir /home/gradle/.gradle \
   && chown --recursive gradle:gradle /home/gradle
 
-#RUN mkdir /builds && chmod -R 777 /builds
-
 #USER gradle
 WORKDIR /home/gradle
 
