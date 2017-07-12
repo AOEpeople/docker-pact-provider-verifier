@@ -24,7 +24,9 @@ RUN set -o errexit -o nounset \
   && mkdir /home/gradle/.gradle \
   && chown --recursive gradle:gradle /home/gradle
 
-USER gradle
+#RUN mkdir /builds && chmod -R 777 /builds
+
+#USER gradle
 WORKDIR /home/gradle
 
 RUN set -o errexit -o nounset \
@@ -34,4 +36,5 @@ RUN set -o errexit -o nounset \
 COPY dependencies.gradle ./dependencies.gradle
 COPY build.gradle ./build.gradle
 RUN gradle -b dependencies.gradle resolve
+
 ENTRYPOINT [ "sh", "-c", "gradle pactVerify" ]
