@@ -8,7 +8,7 @@ repositories {
   }
 }
 dependencies {
-  compile "gradle.plugin.au.com.dius:pact-jvm-provider-gradle_2.11:3.5.0"
+  compile "gradle.plugin.au.com.dius:pact-jvm-provider-gradle_2.11:3.5.5"
 }
 
 task resolve {
