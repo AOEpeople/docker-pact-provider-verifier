@@ -1,7 +1,9 @@
 plugins {
     id "java"
-    id "au.com.dius.pact" version "3.5.0"
+    id "au.com.dius.pact" version "3.5.13"
 }
+
+version System.getenv('VERSION_NUMBER') ?: "0.7.local"
 
 def pactBrokerUrl = System.getenv('PACT_BROKER_URL')
 def pactBrokerUsername = System.getenv('PACT_BROKER_USERNAME')
@@ -22,7 +24,7 @@ pact {
                 hasPactsFromPactBroker(pactBrokerUrl, authentication: ['Basic', pactBrokerUsername, pactBrokerPassword])
             }
             else {
-                println("No valid broker credentials provided. Trying to authentificate without username and password...")
+                println("No valid broker credentials provided. Trying to authenticate without username and password...")
                 hasPactsFromPactBroker(pactBrokerUrl)
             }
         }

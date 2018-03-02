@@ -12,3 +12,6 @@ The following variables need to be provided to get the tests running.
 If your broker requires authentification you can additionally set the following variables:  
 `PACT_BROKER_USERNAME`  
 `PACT_BROKER_PASSWORD`
+
+If you want to publish results back to broker your gradle build should contain 'version' setting:
+`VERSION_NUMBER` (default: "0.7.local")
