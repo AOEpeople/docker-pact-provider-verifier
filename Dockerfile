@@ -31,5 +31,7 @@ RUN set -o errexit -o nounset \
   && echo "Testing Gradle installation" \
   && gradle --version
 
+COPY dependencies.gradle ./dependencies.gradle
 COPY build.gradle ./build.gradle
+RUN gradle -b dependencies.gradle resolve
 ENTRYPOINT [ "sh", "-c", "gradle pactVerify" ]

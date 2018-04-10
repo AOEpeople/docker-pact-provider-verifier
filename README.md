@@ -13,5 +13,5 @@ If your broker requires authentification you can additionally set the following 
 `PACT_BROKER_USERNAME`  
 `PACT_BROKER_PASSWORD`
 
-If you want to publish results back to broker your gradle build should contain 'version' setting:
+If you want to publish results back to broker your gradle build should contain the 'VERSION_NUMBER' environment variable:
 `VERSION_NUMBER` (default: "0.7.local")
