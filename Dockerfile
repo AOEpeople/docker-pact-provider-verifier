@@ -24,7 +24,7 @@ RUN set -o errexit -o nounset \
   && mkdir /home/gradle/.gradle \
   && chown --recursive gradle:gradle /home/gradle
 
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git mailutils
 
 USER gradle
 WORKDIR /home/gradle
